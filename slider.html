@@ -1,0 +1,107 @@
+slider.html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slider Component</title>
+        <style>
+            body {
+                margin: 0;
+            }
+
+            .slider {
+                height: 30px;
+                position: relative;
+            }
+
+            .slider img {
+                width: 10%;
+                height: 30px;
+                position: absolute;
+            }
+
+            .slider .slider-prev-btn, .slider .slider-next-btn {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: transparent;
+                border: 0px;
+                color: #ffffff;
+                font-size: 40px;
+                opacity: 0.2;
+            }
+
+            .slider .slider-prev-btn {
+                left: 0;
+            }
+
+            .slider .slider-next-btn {
+                right: 0;
+            }
+
+            /* Fading animation */
+            .fade {
+                -webkit-animation-name: fade;
+                -webkit-animation-duration: 4s;
+                animation-name: fade;
+                animation-duration: 4s;
+            }
+
+            @-webkit-keyframes fade {
+                from {opacity: .4}
+                to {opacity: 1}
+            }
+
+            @keyframes fade {
+                from {opacity: .4}
+                to {opacity: 1}
+            }
+
+        </style>
+    </head>
+    <body>
+    <div style=max-width:250px;min-width:200px;position:relative;margin:auto;".=$0"
+        <div class="mySlide fade" style=display: none;">
+        </div class="numbertext">1 / 4</div>
+            <img class="fade" src="/Users/evannisbett/Pictures/IMG_9416.jpg" style="width:250px; height:300px;" /> 
+            <img src="/Users/evannisbett/Pictures/IMG_9391.jpg" style="width:250px; height:300px;" />
+            <img src="/Users/evannisbett/Pictures/IMG_8842.jpg" style="width:250px; height:300px;" />
+            <img src="/Users/evannisbett/Pictures/IMG_8840.jpg" style="width:250px; height:300px;" />
+            <img src="/Users/evannisbett/Pictures/IMG_8839.jpg" style="width:250px; height:300px;" />
+            <img src="/Users/evannisbett/Pictures/IMG_8329.jpg" style="width:250px; height:300px;" />
+            <button class="slider-prev-btn" onclick="goPrevImage()"><</button>
+            <button class="slider-next-btn" onclick="goNextImage()">></button>
+        </div>
+    </body>
+    <script>
+        let items = document.querySelectorAll('div img');
+        let currentIndex = 0;
+        function scrollImage() {
+            for(let index=0; index < items.length; index = index + 1) {
+                items[index].setAttribute('style', 'display: none');
+                items[index].classList.add('fade');
+            }
+
+            items[currentIndex].setAttribute('style', 'display: block');
+        }
+
+        function goPrevImage() {
+            if(currentIndex == 0) {
+                currentIndex = items.length-1;
+            } else {
+                currentIndex = currentIndex-1;
+            }
+            scrollImage();
+        }
+
+        function goNextImage() {
+            if(currentIndex == items.length-1) {
+                currentIndex = 0;
+            } else {
+                currentIndex = currentIndex+1;
+            }
+            scrollImage();
+        }
+
+        scrollImage();
+    </script>
+</html>
